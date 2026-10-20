@@ -1,0 +1,48 @@
+{
+  "name": "plagx-cite",
+  "version": "0.1.0",
+  "description": "Plagx Cite: APA/MLA reference formatting, in-text citations, BibTeX import/export, DOI lookup and duplicate reference detection. A free academic writing utility by Plagiarism Checker X.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "docs": "node scripts/build-docs.js",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": [
+    "citation",
+    "bibliography",
+    "reference",
+    "apa",
+    "mla",
+    "bibtex",
+    "doi",
+    "csl-json",
+    "academic-writing"
+  ],
+  "author": "Plagiarism Checker X (https://plagiarismcheckerx.com/)",
+  "license": "MIT",
+  "homepage": "https://github.com/plagiarismcheckerx/plagx-cite#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plagiarismcheckerx/plagx-cite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/plagiarismcheckerx/plagx-cite/issues"
+  }
+}

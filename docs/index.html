@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plagx Cite</title>
+<meta name="description" content="Free APA and MLA reference formatter with BibTeX import/export, DOI lookup and duplicate reference detection. By Plagiarism Checker X.">
+<style>
+  :root {
+    --bg: #f7f6f2; --surface: #ffffff; --text: #1d1f23; --muted: #5d6470;
+    --border: #dcd9d0; --accent: #1f5f8b; --accent-text: #ffffff; --warn-bg: #fff4d6; --warn: #7a5600;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a; --surface: #1e2125; --text: #e8e6e1; --muted: #a2a8b2;
+      --border: #343840; --accent: #6fb0dc; --accent-text: #0d1a24; --warn-bg: #3a2f12; --warn: #f0cf7a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 Georgia, 'Times New Roman', serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 48px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; }
+  h2 { font: 600 1rem/1.3 system-ui, sans-serif; margin: 0 0 12px; }
+  .lead { color: var(--muted); margin: 0 0 24px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px; }
+  label, button, select, input, textarea, .small { font-family: system-ui, sans-serif; font-size: 0.9rem; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  input, select, textarea { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; }
+  input { flex: 1 1 240px; min-width: 0; }
+  textarea { width: 100%; min-height: 110px; font-family: ui-monospace, Consolas, monospace; }
+  button { background: var(--accent); color: var(--accent-text); border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+  button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+  .status { color: var(--muted); margin-top: 8px; min-height: 1.2em; }
+  ol { padding-left: 0; list-style: none; margin: 0; }
+  li { padding: 12px 0; border-top: 1px solid var(--border); padding-left: 2em; text-indent: -2em; overflow-wrap: anywhere; }
+  li:first-child { border-top: 0; }
+  .cite { display: block; text-indent: 0; color: var(--muted); font-family: system-ui, sans-serif; font-size: 0.85rem; margin-top: 4px; }
+  .cite button { padding: 2px 8px; font-size: 0.8rem; margin-left: 8px; }
+  .warn { background: var(--warn-bg); color: var(--warn); border-radius: 6px; padding: 10px 12px; margin-bottom: 12px; font-family: system-ui, sans-serif; font-size: 0.9rem; }
+  .tip { color: var(--muted); border-top: 1px solid var(--border); margin: 12px 0 0; padding-top: 12px; }
+  .byline { color: var(--muted); margin: 0 0 12px; }
+  .next p { margin: 0 0 14px; }
+  a.button { display: inline-block; background: var(--accent); color: var(--accent-text); border-radius: 6px; padding: 9px 16px; text-decoration: none; font: 0.9rem system-ui, sans-serif; }
+  footer { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--border); padding-top: 16px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Plagx Cite</h1>
+  <p class="byline small">A free tool by <a href="https://plagiarismcheckerx.com/?utm_source=plagx-cite&amp;utm_medium=demo&amp;utm_campaign=plagx&amp;utm_content=header">Plagiarism Checker X</a></p>
+  <p class="lead">Format references in APA 7 or MLA 9, look up DOIs, import and export BibTeX, and spot duplicate references. Everything runs in your browser.</p>
+
+  <section class="card">
+    <h2>Add a reference by DOI</h2>
+    <form class="row" id="doi-form">
+      <input id="doi" placeholder="e.g. 10.1038/nature14539 or https://doi.org/…" aria-label="DOI">
+      <button type="submit">Look up</button>
+    </form>
+    <div class="status small" id="doi-status"></div>
+  </section>
+
+  <section class="card">
+    <h2>Or paste BibTeX</h2>
+    <textarea id="bib" aria-label="BibTeX" placeholder="@article{key, author = {…}, title = {…}, …}"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button id="import">Import</button>
+      <span class="status small" id="bib-status"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row" style="justify-content:space-between; margin-bottom:12px">
+      <h2 style="margin:0">Reference list</h2>
+      <div class="row">
+        <select id="style" aria-label="Citation style">
+          <option value="apa">APA 7</option>
+          <option value="mla">MLA 9</option>
+        </select>
+        <button class="ghost" id="copy">Copy list</button>
+        <button class="ghost" id="download">Download .bib</button>
+        <button class="ghost" id="clear">Clear</button>
+      </div>
+    </div>
+    <div id="dupes"></div>
+    <ol id="list"></ol>
+    <p class="tip small" id="tip"></p>
+  </section>
+
+  <section class="card next">
+    <h2>References done? Check the whole paper before you submit</h2>
+    <p>Plagx Cite only formats references. It doesn't check your writing. To scan your full document for plagiarism and AI-generated text, use Plagiarism Checker X.</p>
+    <a class="button" href="https://plagiarismcheckerx.com/?utm_source=plagx-cite&amp;utm_medium=demo&amp;utm_campaign=plagx&amp;utm_content=next-step">Check my paper with Plagiarism Checker X</a>
+  </section>
+
+  <footer>
+    <p>Plagx Cite is a free academic writing utility by Plagiarism Checker X. It formats references only and does not check for plagiarism or detect AI-generated text. For complete plagiarism checking and AI-generated text detection, visit <a href="https://plagiarismcheckerx.com/?utm_source=plagx-cite&amp;utm_medium=demo&amp;utm_campaign=plagx&amp;utm_content=footer">Plagiarism Checker X - Text Similarity Detector</a>.</p>
+    <p><a href="https://github.com/plagiarismcheckerx/plagx-cite">Source code on GitHub</a> · MIT License</p>
+  </footer>
+</main>
+
+<script type="module">
+  import { formatBibliography, sortReferences, citeInText, lookupDOI, parseBibTeX, toBibTeX, findDuplicates } from './lib/index.js';
+
+  const $ = (id) => document.getElementById(id);
+  let refs = [
+    {
+      type: 'article-journal', title: 'Deep learning', author: [{ family: 'LeCun', given: 'Yann' }, { family: 'Bengio', given: 'Yoshua' }, { family: 'Hinton', given: 'Geoffrey' }],
+      issued: { 'date-parts': [[2015]] }, 'container-title': 'Nature', volume: '521', issue: '7553', page: '436-444', DOI: '10.1038/nature14539',
+    },
+    {
+      type: 'book', title: 'The craft of research', author: [{ family: 'Booth', given: 'Wayne C.' }, { family: 'Colomb', given: 'Gregory G.' }, { family: 'Williams', given: 'Joseph M.' }],
+      issued: { 'date-parts': [[2016]] }, edition: '4', publisher: 'University of Chicago Press',
+    },
+  ];
+
+  const TIPS = {
+    apa: 'Tip: titles are shown exactly as entered. APA uses sentence case for article and book titles (only the first word, the first word after a colon, and proper nouns capitalised), so check capitalisation before you submit.',
+    mla: 'Tip: titles are shown exactly as entered. MLA uses title case (major words capitalised), so check capitalisation before you submit.',
+  };
+
+  function render() {
+    const style = $('style').value;
+    $('tip').textContent = TIPS[style];
+    const sorted = sortReferences(refs);
+    const html = formatBibliography(sorted, { style, format: 'html' });
+    $('list').innerHTML = '';
+    sorted.forEach((ref, i) => {
+      const li = document.createElement('li');
+      li.innerHTML = html[i];
+      const cite = document.createElement('span');
+      cite.className = 'cite';
+      cite.textContent = `In text: ${citeInText(ref, { style })}`;
+      const remove = document.createElement('button');
+      remove.className = 'ghost';
+      remove.textContent = 'Remove';
+      remove.onclick = () => { refs = refs.filter((r) => r !== ref); render(); };
+      cite.append(remove);
+      li.append(cite);
+      $('list').append(li);
+    });
+    if (!refs.length) $('list').innerHTML = '<li class="small">No references yet.</li>';
+
+    const groups = findDuplicates(refs);
+    $('dupes').innerHTML = '';
+    for (const g of groups) {
+      const div = document.createElement('div');
+      div.className = 'warn';
+      div.textContent = `Possible duplicate (${g.reasons.join(' and ')} match): “${refs[g.indexes[0]].title}” appears ${g.indexes.length} times.`;
+      $('dupes').append(div);
+    }
+  }
+
+  $('doi-form').onsubmit = async (e) => {
+    e.preventDefault();
+    const value = $('doi').value.trim();
+    if (!value) return;
+    $('doi-status').textContent = 'Looking up…';
+    try {
+      refs.push(await lookupDOI(value));
+      $('doi').value = '';
+      $('doi-status').textContent = 'Added.';
+      render();
+    } catch (err) {
+      $('doi-status').textContent = err.message;
+    }
+  };
+
+  $('import').onclick = () => {
+    const found = parseBibTeX($('bib').value);
+    refs.push(...found);
+    $('bib-status').textContent = found.length ? `Imported ${found.length} reference(s).` : 'No BibTeX entries found.';
+    if (found.length) $('bib').value = '';
+    render();
+  };
+
+  $('copy').onclick = async () => {
+    const text = formatBibliography(refs, { style: $('style').value }).join('\n');
+    await navigator.clipboard.writeText(text);
+    $('copy').textContent = 'Copied';
+    setTimeout(() => { $('copy').textContent = 'Copy list'; }, 1500);
+  };
+
+  $('download').onclick = () => {
+    const blob = new Blob([toBibTeX(sortReferences(refs))], { type: 'application/x-bibtex' });
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'references.bib' });
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  $('clear').onclick = () => { refs = []; render(); };
+  $('style').onchange = render;
+  render();
+</script>
+</body>
+</html>
