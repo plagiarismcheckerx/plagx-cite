@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0: 2026-10-20
+
+- New `plagx-cite` command line: `format`, `check`, `doi` and `bibtex`
+- New `checkReferences()`: finds duplicates, invalid DOIs, DOIs that can't be found, and missing titles, authors or years
+- Fix: an invalid DOI is no longer printed as a link, and a DOI given as a full `https://doi.org/` URL is not doubled
+
 ## 0.1.0 — 2026-10-19
 
 First release.

@@ -1,8 +1,10 @@
 # Plagx Cite
 
-*A free academic writing tool by [Plagiarism Checker X](https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=byline)*
+*A free academic writing tool by Plagiarism Checker X.*
 
-Format references in **APA 7** and **MLA 9**, create in-text citations, import and export **BibTeX**, look up **DOIs**, and find **duplicate references**.
+**Plagx Cite is a free, open-source citation generator and reference checker.** It turns sources into correct APA 7 and MLA 9 references and in-text citations, so students and researchers can build a clean reference list in seconds. It also checks the list for duplicate references, broken DOIs and missing details before you submit.
+
+Use it as an **APA citation generator** or **MLA citation generator**: create a **reference list, bibliography or works cited** page, generate **in-text citations**, turn a **DOI into a citation**, import and export **BibTeX**, and find **duplicate references**.
 
 - No dependencies, about 20 KB of plain JavaScript
 - Works in Node.js 18+, modern browsers, Deno and Bun
@@ -12,7 +14,9 @@ Format references in **APA 7** and **MLA 9**, create in-text citations, import a
 
 **[Try the live demo →](https://plagiarismcheckerx.github.io/plagx-cite/)**
 
-> Plagx Cite is a free academic writing utility by Plagiarism Checker X. It formats and checks references only. It does **not** check for plagiarism or detect AI-generated text. To check complete documents for plagiarism and AI-generated text, visit [Plagiarism Checker X - Text Similarity Detector](https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=notice).
+Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=citation-generator).
+
+> Plagx Cite is a free academic writing utility by Plagiarism Checker X. It is a citation generator that builds and checks APA and MLA reference lists. Plagiarism checking and AI-generated text detection are available in Plagiarism Checker X, linked at the end of this page.
 
 ## Install
 
@@ -26,7 +30,7 @@ Or load it in a browser with no install:
 
 ```html
 <script type="module">
-  import { formatReference } from 'https://cdn.jsdelivr.net/npm/plagx-cite@0.1.0/src/index.js';
+  import { formatReference } from 'https://cdn.jsdelivr.net/npm/plagx-cite@0.2.0/src/index.js';
 </script>
 ```
 
@@ -115,6 +119,37 @@ findDuplicates(refs);
 
 References count as duplicates when they share a DOI, or the same title and first author. Case, accents and punctuation are ignored.
 
+### Checking a reference list
+
+```js
+import { checkReferences } from 'plagx-cite';
+
+const result = await checkReferences(refs, { checkDOIs: true });
+// { references: 4, errors: 2, warnings: 1, issues: [{ level: 'error', code: 'duplicate', ref: 'smith2020b', ... }] }
+```
+
+Errors are duplicates, invalid DOIs and DOIs that can't be found (with `checkDOIs`). Warnings are missing titles, authors or years.
+
+## Command line
+
+```bash
+npx plagx-cite format references.bib --style apa
+npx plagx-cite check references.bib --check-dois
+npx plagx-cite doi 10.1038/nature14539 --style mla
+npx plagx-cite bibtex references.json > references.bib
+```
+
+| Command | What it does |
+|---|---|
+| `format <file>` | Prints the formatted reference list (`--style apa\|mla`, `--format text\|html\|markdown`) |
+| `check <file>` | Reports duplicates, invalid DOIs and missing fields (`--check-dois`, `--strict`, `--json`) |
+| `doi <doi> [...]` | Looks up DOIs and prints formatted references |
+| `bibtex <file>` | Converts a CSL-JSON or BibTeX file to BibTeX |
+
+`<file>` is a `.bib` or CSL-JSON `.json` file, or `-` for stdin. Exit codes: `0` OK, `1` problems found, `2` usage or input error.
+
+The same commands are also available as a [GitHub Action](https://github.com/plagiarismcheckerx/plagx-cite-action) and a [Docker image](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite).
+
 ## Good to know
 
 - Titles are used exactly as you give them. APA wants sentence case for article and book titles, and MLA wants title case. Plagx Cite does not change capitalisation automatically, because doing so would break names and acronyms.
@@ -127,9 +162,24 @@ npm test          # run the tests
 npm run docs      # copy the library into docs/ for the demo page
 ```
 
-## About Plagiarism Checker X
+<h2>Plagx Cite - Free Citation & Reference Toolkit</h2>
 
-Plagx Cite is made by [Plagiarism Checker X](https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about), which builds tools for students, researchers, teachers and publishers. Plagx Cite helps with reference lists. To check a full paper for plagiarism and AI-generated text before you submit it, use the [Plagiarism Checker X - Text Similarity Detector](https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about-cta).
+<p>
+ An open-source citation utility for students, researchers and developers.
+ Format references, organize citations and manage bibliographies.
+ </p>
+
+<p>
+ Developed by Plagiarism Checker X.
+ </p>
+
+<p>
+ Plagx Cite helps with source attribution; it does not detect plagiarism
+ or AI-generated text. For full document checks, explore
+ <a href="https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about-cta">Plagiarism Checker X</a>
+ and its
+ <a href="https://plagiarismcheckerx.com/ai-content-detector?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about-ai-detector">AI Content Detector</a>.
+ </p>
 
 ## License
 
