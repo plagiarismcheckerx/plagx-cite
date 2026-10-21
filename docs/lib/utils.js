@@ -1,3 +1,5 @@
+import { normalizeDOI } from './doi.js';
+
 export const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December',
@@ -62,8 +64,9 @@ export function doiURL(doi) {
   return `https://doi.org/${doi}`;
 }
 
-/** Preferred link for a reference: DOI first, then URL. */
+/** Preferred link for a reference: a valid DOI first, then URL. */
 export function link(ref) {
-  if (ref.DOI) return doiURL(ref.DOI);
+  const doi = ref.DOI && normalizeDOI(ref.DOI);
+  if (doi) return doiURL(doi);
   return ref.URL || '';
 }

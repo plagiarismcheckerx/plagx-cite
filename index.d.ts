@@ -69,3 +69,23 @@ export interface DuplicateGroup {
   reasons: Array<'doi' | 'title'>;
 }
 export function findDuplicates(refs: Reference[]): DuplicateGroup[];
+
+export interface CheckIssue {
+  level: 'error' | 'warning';
+  code: 'duplicate' | 'invalid-doi' | 'doi-not-found' | 'missing-title' | 'missing-author' | 'missing-year';
+  /** Index of the reference in the input array. */
+  index: number;
+  /** The reference id (BibTeX key), or "#n" when it has none. */
+  ref: string;
+  message: string;
+}
+export interface CheckResult {
+  references: number;
+  errors: number;
+  warnings: number;
+  issues: CheckIssue[];
+}
+export function checkReferences(
+  refs: Reference[],
+  options?: { checkDOIs?: boolean; fetch?: typeof fetch; mailto?: string },
+): Promise<CheckResult>;

@@ -6,3 +6,4 @@ export { styles, formatReference, formatBibliography, citeInText, sortReferences
 export { toBibTeX, parseBibTeX } from './bibtex.js';
 export { normalizeDOI, isDOI, extractDOIs, lookupDOI, fromCrossref } from './doi.js';
 export { findDuplicates } from './duplicates.js';
+export { checkReferences } from './check.js';
