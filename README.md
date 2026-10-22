@@ -14,6 +14,8 @@ Use it as an **APA citation generator** or **MLA citation generator**: create a 
 
 **[Try the live demo →](https://plagiarismcheckerx.github.io/plagx-cite/)**
 
+Developer downloads: [npm](https://www.npmjs.com/package/plagx-cite) · [jsDelivr](https://www.jsdelivr.com/package/npm/plagx-cite) · [Docker Hub](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite) · [GitHub Marketplace](https://github.com/marketplace/actions/plagx-cite-reference-check) · [GitLab](https://gitlab.com/plagiarism-checker-x/plagx-cite)
+
 Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=citation-generator).
 
 > Plagx Cite is a free academic writing utility by Plagiarism Checker X. It is a citation generator that builds and checks APA and MLA reference lists. Plagiarism checking and AI-generated text detection are available in Plagiarism Checker X, linked at the end of this page.

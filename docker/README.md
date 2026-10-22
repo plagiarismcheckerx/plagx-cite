@@ -11,6 +11,8 @@
 
 **[Try the live demo →](https://plagiarismcheckerx.github.io/plagx-cite/)**
 
+Developer downloads: [Docker Hub](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite) · [GitHub Marketplace](https://github.com/marketplace/actions/plagx-cite-reference-check) · [npm](https://www.npmjs.com/package/plagx-cite) · [PyPI](https://pypi.org/project/plagx-cite/) · [GitHub](https://github.com/plagiarismcheckerx/plagx-cite)
+
 Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=docker-hub&utm_medium=overview&utm_campaign=plagx&utm_content=citation-generator).
 
 > Plagx Cite is a free academic writing utility by Plagiarism Checker X. It is a citation generator that builds and checks APA and MLA reference lists. Plagiarism checking and AI-generated text detection are available in Plagiarism Checker X, linked at the end of this page.
