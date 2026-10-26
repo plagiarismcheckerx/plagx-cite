@@ -12,7 +12,7 @@ Use it as an **APA citation generator** or **MLA citation generator**: create a 
 - Plain text, HTML or Markdown output
 - TypeScript types included
 
-**[Try the live demo →](https://plagiarismcheckerx.github.io/plagx-cite/)**
+**[Try the live demo →](https://plagiarismcheckerx.github.io/plagx-cite/)** · [Open in Observable](https://observablehq.com/@plagiarismcheckerx/plagx-cite)
 
 Developer downloads: [npm](https://www.npmjs.com/package/plagx-cite) · [jsDelivr](https://www.jsdelivr.com/package/npm/plagx-cite) · [Docker Hub](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite) · [GitHub Marketplace](https://github.com/marketplace/actions/plagx-cite-reference-check) · [GitLab](https://gitlab.com/plagiarism-checker-x/plagx-cite)
 
