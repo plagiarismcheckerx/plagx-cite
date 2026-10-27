@@ -13,7 +13,7 @@
 
 Developer downloads: [Docker Hub](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite) · [GitHub Marketplace](https://github.com/marketplace/actions/plagx-cite-reference-check) · [npm](https://www.npmjs.com/package/plagx-cite) · [PyPI](https://pypi.org/project/plagx-cite/) · [GitHub](https://github.com/plagiarismcheckerx/plagx-cite)
 
-Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=docker-hub&utm_medium=overview&utm_campaign=plagx&utm_content=citation-generator).
+Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=plagx-cite-docker).
 
 > Plagx Cite is a free academic writing utility by Plagiarism Checker X. It is a citation generator that builds and checks APA and MLA reference lists. Plagiarism checking and AI-generated text detection are available in Plagiarism Checker X, linked at the end of this page.
 
@@ -61,6 +61,6 @@ An open-source citation utility for students, researchers and developers. Format
 
 Developed by Plagiarism Checker X.
 
-Plagx Cite helps with source attribution; it does not detect plagiarism or AI-generated text. For full document checks, explore [Plagiarism Checker X](https://plagiarismcheckerx.com/?utm_source=docker-hub&utm_medium=overview&utm_campaign=plagx&utm_content=about-cta) and its [AI Content Detector](https://plagiarismcheckerx.com/ai-content-detector?utm_source=docker-hub&utm_medium=overview&utm_campaign=plagx&utm_content=about-ai-detector).
+Plagx Cite helps with source attribution; it does not detect plagiarism or AI-generated text. For full document checks, explore [Plagiarism Checker X](https://plagiarismcheckerx.com/?utm_source=plagx-cite-docker) and its [AI Content Detector](https://plagiarismcheckerx.com/ai-content-detector?utm_source=plagx-cite-docker).
 
 MIT © Plagiarism Checker X

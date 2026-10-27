@@ -16,7 +16,7 @@ Use it as an **APA citation generator** or **MLA citation generator**: create a 
 
 Developer downloads: [npm](https://www.npmjs.com/package/plagx-cite) · [jsDelivr](https://www.jsdelivr.com/package/npm/plagx-cite) · [Docker Hub](https://hub.docker.com/r/plagiarismcheckerx/plagx-cite) · [GitHub Marketplace](https://github.com/marketplace/actions/plagx-cite-reference-check) · [GitLab](https://gitlab.com/plagiarism-checker-x/plagx-cite)
 
-Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=citation-generator).
+Need a quick citation online? Use the [free citation generator](https://plagiarismcheckerx.com/citation-generator?utm_source=plagx-cite).
 
 > Plagx Cite is a free academic writing utility by Plagiarism Checker X. It is a citation generator that builds and checks APA and MLA reference lists. Plagiarism checking and AI-generated text detection are available in Plagiarism Checker X, linked at the end of this page.
 
@@ -178,9 +178,9 @@ npm run docs      # copy the library into docs/ for the demo page
 <p>
  Plagx Cite helps with source attribution; it does not detect plagiarism
  or AI-generated text. For full document checks, explore
- <a href="https://plagiarismcheckerx.com/?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about-cta">Plagiarism Checker X</a>
+ <a href="https://plagiarismcheckerx.com/?utm_source=plagx-cite">Plagiarism Checker X</a>
  and its
- <a href="https://plagiarismcheckerx.com/ai-content-detector?utm_source=plagx-cite&utm_medium=readme&utm_campaign=plagx&utm_content=about-ai-detector">AI Content Detector</a>.
+ <a href="https://plagiarismcheckerx.com/ai-content-detector?utm_source=plagx-cite">AI Content Detector</a>.
  </p>
 
 ## License
