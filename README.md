@@ -32,7 +32,7 @@ Or load it in a browser with no install:
 
 ```html
 <script type="module">
-  import { formatReference } from 'https://cdn.jsdelivr.net/npm/plagx-cite@0.2.1/src/index.js';
+  import { formatReference } from 'https://cdn.jsdelivr.net/npm/plagx-cite@0.2.2/src/index.js';
 </script>
 ```
 

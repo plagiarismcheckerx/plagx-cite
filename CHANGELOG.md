@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2: 2026-10-27
+
+- Documentation updates. No changes to the API or output.
+
 ## 0.2.1: 2026-10-21
 
 - README, npm description and keywords: clearer description of the citation generator, citation keywords, links to the Plagiarism Checker X citation generator, plagiarism checker and AI Content Detector

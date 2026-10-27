@@ -1,6 +1,6 @@
 {
   "name": "plagx-cite",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Plagx Cite: APA/MLA reference formatting, in-text citations, BibTeX import/export, DOI lookup and duplicate reference detection. A free academic writing utility by Plagiarism Checker X.",
   "type": "module",
   "main": "./src/index.js",

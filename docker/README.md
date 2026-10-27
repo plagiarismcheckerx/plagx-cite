@@ -45,7 +45,7 @@ Run `docker run --rm plagiarismcheckerx/plagx-cite --help` for all options.
 ## Tags
 
 - `latest`: newest release
-- `0.2.1`, `0.2`: specific versions
+- `0.2.2`, `0.2`: specific versions
 
 Images are built for `linux/amd64` and `linux/arm64` and run as a non-root user.
 
